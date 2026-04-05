@@ -1,0 +1,9 @@
+services:
+  traefik:
+    image: traefik:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml:ro
+    environment:
+      - TZ=UTC

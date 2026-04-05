@@ -1,0 +1,46 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    env_file:
+      - .env
+    environment:
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_USERSPACE: "false"
+      TS_DEBUG_FIREWALL_MODE: nftables
+    volumes:
+      - tailscale-state:/var/lib/tailscale
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    privileged: true    
+    command: >
+      sh -c "tailscaled &
+            sleep 5
+            tailscale up --authkey=$$TS_AUTHKEY --exit-node=100.x.x.x --accept-routes --operator=root
+            tail -f /dev/null"
+    healthcheck:
+      test: ["CMD", "tailscale", "status"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  dragonwilds:
+    image: andyaltsys/dragonwilds:latest
+    container_name: dragonwilds
+    user: "1000:1000"
+    environment:
+      SERVER_PORT: 45000
+    network_mode: service:tailscale
+    volumes:
+      - ./server:/home/ubuntu/Steam
+    restart: unless-stopped
+    depends_on:
+      tailscale:
+        condition: service_healthy
+
+volumes:
+  tailscale-state:

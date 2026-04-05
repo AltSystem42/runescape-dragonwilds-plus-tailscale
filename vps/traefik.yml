@@ -1,0 +1,21 @@
+entryPoints:
+  udp_45000:
+    address: ":45000/udp"
+
+providers:
+  file:
+    filename: /etc/traefik/traefik.yml
+    watch: true
+
+udp:
+  routers:
+    router_45000:
+      entryPoints:
+        - udp_45000
+      service: service_45000
+
+  services:
+    service_45000:
+      loadBalancer:
+        servers:
+          - address: "100.x.x.x:45000"
