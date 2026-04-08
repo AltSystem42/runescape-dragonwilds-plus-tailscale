@@ -187,4 +187,4 @@ docker compose logs dragonwilds
 
 ## Credits
 
-Based on the tutorial by [Your Name/Channel](https://www.youtube.com/watch?v=M8jxPDxR4W4)
+Based on the tutorial by [Andy Druid](https://www.youtube.com/watch?v=M8jxPDxR4W4)
