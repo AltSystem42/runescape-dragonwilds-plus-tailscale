@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   dragonwilds:
-    image: andyaltsys/dragonwilds:latest
+    image: andyaltsys/dragonwilds-dedicated-server:latest
     container_name: dragonwilds
     env_file:
       - .env
