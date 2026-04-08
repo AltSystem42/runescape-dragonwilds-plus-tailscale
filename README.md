@@ -23,20 +23,19 @@ Run your own Runescape: Dragonwilds server with Docker, Tailscale, and Traefik o
 ## cmds to run
 
 ## tailscale install for vps
-sudo apt update && sudo apt upgrade -y
-ssh -i path/to/key.pem ubuntu@your-vps-public-ip
-sudo tailscale up --accept-routes --advertise-exit-node
+- sudo apt update && sudo apt upgrade -y
+- ssh -i path/to/key.pem ubuntu@your-vps-public-ip
+- sudo tailscale up --accept-routes --advertise-exit-node
+
 ## docker command to run to install docker & docker compose
-curl -fsSL https://get.docker.com | sh
-systemctl enable docker
-systemctl start docker
-docker --version
-sudo apt update && sudo apt install docker-compose-plugin
-docker compose version
+- curl -fsSL https://get.docker.com | sh
+- systemctl enable docker
+- systemctl start docker
+- docker --version
+- sudo apt update && sudo apt install docker-compose-plugin
+- docker compose version
 
 ## cmd to get tailscale ip
-tailscale ip -4
-In docker: docker exec tailscale tailscale ip -4
+- tailscale ip -4
+- In docker: docker exec tailscale tailscale ip -4
 
-## for this dragonwilds image
-sudo chown 1000:1000 ./server/
