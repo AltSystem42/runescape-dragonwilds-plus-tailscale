@@ -31,9 +31,8 @@ services:
   dragonwilds:
     image: andyaltsys/dragonwilds:latest
     container_name: dragonwilds
-    user: "1000:1000"
-    environment:
-      SERVER_PORT: 45000
+    env_file:
+      - .env
     network_mode: service:tailscale
     volumes:
       - ./server:/home/ubuntu/Steam
