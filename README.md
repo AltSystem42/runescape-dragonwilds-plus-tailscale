@@ -42,7 +42,7 @@ Configure these in `home-server/.env`:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `SERVER_PORT` | 45000 | UDP port for server connections |
+| `SERVER_PORT` | 7777 | UDP port for server connections |
 | `TZ` | UTC | Timezone for scheduled backups |
 | `ENABLE_AUTO_UPDATE` | true | Enable automatic server updates |
 | `UPDATE_TIME` | 3600 | Seconds between update checks (default: 1 hour) |
@@ -50,6 +50,7 @@ Configure these in `home-server/.env`:
 | `BACKUP_DAILY` | true | Run daily scheduled backup |
 | `BACKUP_TIME` | 3:00 AM | Daily backup time (12-hour format with AM/PM) |
 | `BACKUP_RETENTION_DAYS` | 30 | Days to keep backups |
+| `POLL_INTERVAL` | 60 | Seconds between each player monitoring log check |
 | `IDLE_WAIT` | 360 | Seconds to wait for no players before update/backup (default: 6 min) |
 | `ENABLE_DISCORD_NOTIF` | false | Enable Discord webhook notifications |
 | `DISCORD_WEBHOOK_URL` | (empty) | Discord webhook URL |
